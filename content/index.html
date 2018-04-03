@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="project1">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJ-Project-One</title>
+
+    <script src="../app/lib/angular.min.js"></script>
+    <script src="../app/app.js"></script>
+    <script src="../app/controller.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+    <div ng-init="firstName='John'" ng-controller="Controller1">
+        <h3>Data binding</h3>
+        <p>Input something in the input box:</p>
+        <p>Name:
+            <input type="text" ng-model="firstName">
+        </p>
+        <p>You wrote: {{ firstName }}</p>
+        <p>--------------------------------------</p>
+
+        <h3>Scope</h3>
+        <p>Say Hello 1: {{ sayHello }}</p>
+        <p>--------------------------------------</p>
+    </div>
+    <div ng-controller="Controller2">
+        <h3>Controler lồng nhau</h3>
+        <p>Say Hello 2: {{ sayHello }}</p>
+        <div ng-controller="Controller4">
+            <p>Say Hello 4: {{ sayHello }}</p>
+            <button ng-click="onClick()">Click me</button>
+        </div>
+        <div ng-controller="Controller5">
+            <p>Say Hello 5: {{ sayHello }}</p>
+        </div>
+        <p>--------------------------------------</p>
+    </div>
+    <div ng-controller="Controller3">
+        <h3>Thực hiện phép toán giữa 2 số</h3>
+        <p>Số thứ 1:
+            <input type="number" ng-model="so1">
+        </p>
+        <p>Số thứ 2:
+            <input type="number" ng-model="so2">
+        </p>
+        <select ng-model="pheptoan">
+            <option value="">Chọn phép toán</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <p>
+            <button ng-click="tinhtoan()">Xem kết quả</button>
+        </p>
+        <p>Kết quả là: {{ ketqua }}</p>
+        <p>--------------------------------------</p>
+    </div>
+</body>
+
+</html>
