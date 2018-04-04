@@ -16,20 +16,20 @@
 
 <body>
     <div ng-init="firstName='John'" ng-controller="Controller1">
-        <h3>Data binding</h3>
+        <h2>Data binding</h2>
         <p>Input something in the input box:</p>
         <p>Name:
             <input type="text" ng-model="firstName">
         </p>
         <p>You wrote: {{ firstName }}</p>
-        <p>--------------------------------------</p>
+        <p>-------------------------------------------------------------------------</p>
 
-        <h3>Scope</h3>
+        <h2>Scope</h2>
         <p>Say Hello 1: {{ sayHello }}</p>
-        <p>--------------------------------------</p>
+        <p>-------------------------------------------------------------------------</p>
     </div>
     <div ng-controller="Controller2">
-        <h3>Controler lồng nhau</h3>
+        <h2>Controler lồng nhau</h2>
         <p>Say Hello 2: {{ sayHello }}</p>
         <div ng-controller="Controller4">
             <p>Say Hello 4: {{ sayHello }}</p>
@@ -38,10 +38,10 @@
         <div ng-controller="Controller5">
             <p>Say Hello 5: {{ sayHello }}</p>
         </div>
-        <p>--------------------------------------</p>
+        <p>-------------------------------------------------------------------------</p>
     </div>
     <div ng-controller="Controller3">
-        <h3>Thực hiện phép toán giữa 2 số</h3>
+        <h2>Thực hiện phép toán giữa 2 số</h2>
         <p>Số thứ 1:
             <input type="number" ng-model="so1">
         </p>
@@ -59,10 +59,10 @@
             <button ng-click="tinhtoan()">Xem kết quả</button>
         </p>
         <p>Kết quả là: {{ ketqua }}</p>
-        <p>--------------------------------------</p>
+        <p>-------------------------------------------------------------------------</p>
     </div>
     <div ng-controller="Controller6">
-        <h3>Filter</h3>
+        <h2>Filter</h2>
         <p>Upper: {{ name | uppercase }}</p>
         <p>Lower: {{ name | lowercase }}</p>
         <p>Price: {{ price | currency }}</p>
@@ -77,6 +77,11 @@
                 {{ x.name }}
             </li>
         </ul>
+        <ul>
+            <li ng-repeat="x in names" ng-if="$even">
+                {{$index}} - {{x.name}}
+            </li>
+        </ul>
         <p>{{ names | limitTo:2 }}</p>
         <p>{{ str | limitTo:4 }}</p>
         <p>{{ arr | json }}</p>
@@ -85,7 +90,39 @@
         <p>{{ today | date:'dd-MM-yyyy' }}</p></p>
         <p>{{ arr1 | evenNumberInArray }}</p>
         <p>{{ arr2 | startsWithA }}</p>
-        <p>--------------------------------------</p>
+        <p>-------------------------------------------------------------------------</p>
+    </div>
+    <div ng-controller="Controller7">
+        <h2>Form</h2>
+        <form name="form" class="ctrl-7-form">
+            <label for="">Name: <input type="text" name="name" ng-model="user.name" ng-minlength="6" ng-maxlength="10"></label><br>
+            <div ng-if="form.$submitted">
+                <span ng-if="form.name.$error.minlength">Name must contains at least 6 characters</span>
+                <span ng-if="form.name.$error.maxlength">Name must contains maximum 10 characters</span>
+            </div>
+            <label for="">Email: <input type="text" ng-model="user.email"></label><br>
+            <label for="">Gender: 
+                <input type="radio" ng-model="user.gender" value="male">Male
+                <input type="radio" ng-model="user.gender" value="female">Female
+            </label><br>
+            <!-- <p ng-show="2===1">Hello</p>
+            <p ng-hide="2<1">Hello</p> -->
+            <button type="submit" ng-click="save(user)">Save</button>
+            <button ng-click="reset()">Reset</button>
+        </form>
+        <pre>user = {{ user | json }}</pre>
+        <pre>master = {{ master | json }}</pre>
+        <p>-------------------------------------------------------------------------</p>
+    </div>
+    <div ng-controller="Controller8">
+        <h2>Service</h2>
+        <input ng-model="number" ng-change="showMessage()"/>
+        <p>{{ message1 }}</p>
+        <p>{{ message2 }}</p>
+        <p>-------------------------------------------------------------------------</p>
+    </div>
+    <div ng-controller="Controller9">
+        <h2>Dependency Injection</h2>
     </div>
 </body>
 

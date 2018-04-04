@@ -40,19 +40,18 @@ project1.controller('Controller5', function ($scope) {
 project1.controller('Controller6', function ($scope) {
     $scope.name = "Tạ Hữu Công";
     $scope.price = 30;
-    $scope.names = [
-        {
+    $scope.names = [{
             name: 'Jani',
             country: 'Norway'
-        }, 
+        },
         {
             name: 'Carl',
             country: 'Sweden'
-        }, 
+        },
         {
             name: 'Margareth',
             country: 'England'
-        }, 
+        },
     ];
     $scope.number = 100.01234;
     $scope.str = "abcdeffffffffffff";
@@ -61,3 +60,25 @@ project1.controller('Controller6', function ($scope) {
     $scope.today = new Date();
 });
 
+project1.controller('Controller7', function ($scope) {
+    $scope.master = {};
+    $scope.save = function (user) {
+        $scope.master = angular.copy(user);
+    };
+    $scope.reset = function () {
+        $scope.user = {};
+    };
+});
+
+project1.controller('Controller8', ['$scope', 'kiem_tra_so_chia_3_du_1', 'kiem_tra_so_chinh_phuong',
+    function ($scope, kiem_tra_so_chia_3_du_1, kiem_tra_so_chinh_phuong) {
+        $scope.showMessage = function () {
+            $scope.message1 = kiem_tra_so_chia_3_du_1($scope.number);
+            $scope.message2 = kiem_tra_so_chinh_phuong($scope.number);
+        }
+    }
+]);
+
+project1.controller('Controller9', ['$scope', function ($scope) {
+
+}]);
